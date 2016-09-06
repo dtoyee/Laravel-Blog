@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -34,7 +35,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/admin/') }}">
                     Laravel Blog Admin
                 </a>
             </div>
@@ -71,7 +72,24 @@
         </div>
     </nav>
 
-    @yield('content')
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="list-group">
+                  <a href="{{ URL('admin/') }}" class="list-group-item {{ set_active(['admin']) }}"><i class="fa fa-tachometer" aria-hidden="true"></i> 
+                    Dashboard</a>
+                  <a href="{{ URL('admin/entries') }}" class="list-group-item {{ set_active(['admin/entries']) }}"><i class="fa fa-clipboard" aria-hidden="true"></i> 
+                    Blog Entries</a>
+                  <a href="{{ URL('admin/users') }}" class="list-group-item {{ set_active(['admin/users']) }}"><i class="fa fa-users" aria-hidden="true"></i> 
+                    Users</a>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                @yield('content')
+            </div>
+        </div>
+    </section>
 
     <!-- Scripts -->
     <script src="{{ URL::asset('js/app.js') }}"></script>
